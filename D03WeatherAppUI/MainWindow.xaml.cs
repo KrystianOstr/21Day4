@@ -25,14 +25,49 @@ namespace D03WeatherAppUI
             InitializeComponent();
         }
 
+        // synchronous processing 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string city = txtCityName.Text;
+            string cities = txtCityName.Text;
             WeatherManager wm   = new WeatherManager();
 
-            int temp=  wm.GetTemperature(city);
+            string[] citiesArray = cities.Split("\n");
 
-            txtTemperature.Text = temp.ToString();
+            txtLogs.Text = "";
+            txtTemperature.Text = "";
+            foreach (var city in citiesArray)
+            {
+                int temp = wm.GetTemperature(city);
+                txtLogs.Text += $"Processing city {city}\n";
+                txtTemperature.Text += $"Temperature in city {city} is {temp.ToString()}\n";
+            }
         }
+
+        // asynchronous 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string cities = txtCityName.Text;
+            WeatherManager wm = new WeatherManager();
+
+            string[] citiesArray = cities.Split("\n");
+
+            txtLogs.Text = "";
+            txtTemperature.Text = "";
+            foreach (var city in citiesArray)
+            {
+                // int temp = wm.GetTemperature(city);
+                var t= Task.Run(() => wm.GetTemperature(city));
+
+                t.GetAwaiter().OnCompleted(() =>
+                {
+                    txtTemperature.Text += $"Temperature in city {city} is {t.Result.ToString()}\n";
+                });
+
+                txtLogs.Text += $"Processing city {city}\n";
+               
+            }
+        }
+
+        // lunch breake 1:15
     }
 }

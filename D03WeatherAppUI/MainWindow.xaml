@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:D03WeatherAppUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="290" Width="800">
     <Grid>
-        <Button Content="Get weather" HorizontalAlignment="Left" Margin="17,45,0,0" VerticalAlignment="Top" Height="40" Width="79" Click="Button_Click"/>
-        <TextBox x:Name="txtCityName" HorizontalAlignment="Left" Margin="185,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtTemperature" HorizontalAlignment="Left" Margin="185,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="City name" HorizontalAlignment="Left" Margin="185,19,0,0" VerticalAlignment="Top"/>
-        <Label Content="Temperature" HorizontalAlignment="Left" Margin="185,67,0,0" VerticalAlignment="Top"/>
+        <Button Content="Get weather (synchronous)" HorizontalAlignment="Left" Margin="17,45,0,0" VerticalAlignment="Top" Height="40" Width="163" Click="Button_Click"/>
+        <TextBox x:Name="txtCityName" AcceptsReturn="True" HorizontalAlignment="Left" Margin="197,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="182" Height="182"/>
+        <TextBox x:Name="txtTemperature" HorizontalAlignment="Left" Margin="589,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="201" Height="179"/>
+        <Label Content="Cities name" HorizontalAlignment="Left" Margin="197,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="Temperature" HorizontalAlignment="Left" Margin="589,22,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLogs" HorizontalAlignment="Left" Margin="400,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="172" Height="180"/>
+        <Label Content="Logs:" HorizontalAlignment="Left" Margin="400,21,0,0" VerticalAlignment="Top"/>
+        <Button Content="Get weather (asynchronous)" HorizontalAlignment="Left" Margin="17,99,0,0" VerticalAlignment="Top" Height="39" Width="163" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
