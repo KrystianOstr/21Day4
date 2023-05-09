@@ -15,6 +15,7 @@
         <TextBox x:Name="txtLogs" HorizontalAlignment="Left" Margin="400,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="172" Height="180"/>
         <Label Content="Logs:" HorizontalAlignment="Left" Margin="400,21,0,0" VerticalAlignment="Top"/>
         <Button Content="Get weather (asynchronous)" HorizontalAlignment="Left" Margin="17,99,0,0" VerticalAlignment="Top" Height="39" Width="163" Click="Button_Click_1"/>
+        <Button Content="Get weather2 (asynchronous)" HorizontalAlignment="Left" Margin="17,154,0,0" VerticalAlignment="Top" Height="39" Width="163" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

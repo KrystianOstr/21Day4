@@ -35,16 +35,26 @@ namespace D03WeatherAppUI
 
             txtLogs.Text = "";
             txtTemperature.Text = "";
-            foreach (var city in citiesArray)
+            try
             {
-                int temp = wm.GetTemperature(city);
-                txtLogs.Text += $"Processing city {city}\n";
-                txtTemperature.Text += $"Temperature in city {city} is {temp.ToString()}\n";
+                foreach (var city in citiesArray)
+                {
+                    int temp = wm.GetTemperature(city);
+                    txtLogs.Text += $"Processing city {city}\n";
+                    txtTemperature.Text += $"Temperature in city {city} is {temp.ToString()}\n";
+                }
             }
+            catch (Exception)
+            {
+               // throw;
+                MessageBox.Show("We cannot process your data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+           
         }
 
         // asynchronous 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string cities = txtCityName.Text;
             WeatherManager wm = new WeatherManager();
@@ -53,18 +63,56 @@ namespace D03WeatherAppUI
 
             txtLogs.Text = "";
             txtTemperature.Text = "";
-            foreach (var city in citiesArray)
+
+            try
             {
-                // int temp = wm.GetTemperature(city);
-                var t= Task.Run(() => wm.GetTemperature(city));
-
-                t.GetAwaiter().OnCompleted(() =>
+                foreach (var city in citiesArray)
                 {
-                    txtTemperature.Text += $"Temperature in city {city} is {t.Result.ToString()}\n";
-                });
+                    // int temp = wm.GetTemperature(city);
+                    var t = Task.Run(() => wm.GetTemperature(city));
 
-                txtLogs.Text += $"Processing city {city}\n";
-               
+                    t.GetAwaiter().OnCompleted(() =>
+                    {
+                        txtTemperature.Text += $"Temperature in city {city} is {t.Result.ToString()}\n";
+                    });
+
+                    txtLogs.Text += $"Processing city {city}\n";
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("We cannot process your data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            string cities = txtCityName.Text;
+            WeatherManager wm = new WeatherManager();
+
+            string[] citiesArray = cities.Split("\n");
+
+            txtLogs.Text = "";
+            txtTemperature.Text = "";
+
+            try
+            {
+                foreach (var city in citiesArray)
+                {
+                    // int temp = wm.GetTemperature(city);
+                    txtLogs.Text += $"Processing city {city}\n";
+
+                    int t = await Task.Run(() => wm.GetTemperature(city));
+
+                    txtTemperature.Text += $"Temperature in city {city} is {t}\n";
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("We cannot process your data", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
