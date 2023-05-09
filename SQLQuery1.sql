@@ -15,6 +15,9 @@ create table Players
   weight int
 )
 
+ALTER TABLE table_name
+RENAME COLUMN old_name to new_name;
+
 insert into players (first_name, last_name, country) values ('john','smith','usa')
 
 select * from Players
