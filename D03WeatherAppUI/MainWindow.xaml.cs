@@ -27,7 +27,12 @@ namespace D03WeatherAppUI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string city = txtCityName.Text;
+            WeatherManager wm   = new WeatherManager();
 
+            int temp=  wm.GetTemperature(city);
+
+            txtTemperature.Text = temp.ToString();
         }
     }
 }

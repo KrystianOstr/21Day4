@@ -20,14 +20,16 @@ namespace D03WeatherAppUI
 
             string pattern = "<div class=\"BNeawe iBp4i AP7Wnd\">(-{0,1}\\d{1,2}.{0,1}\\d{0,2}).C<\\/div>";
 
-            string someString = "hello\\ntomasz";
-            Console.WriteLine(someString);
-
             Regex rx = new Regex(pattern);
             Match match = rx.Match(text);
 
             string result = match.Groups[1].Value;
+          
+            // return int.Parse(result);
+            //int a = 4;
+            //a.ToString();
 
+            return Convert.ToInt32(result);
         }
     }
 }
