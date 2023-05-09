@@ -16,6 +16,5 @@
         <Label Content="Logs:" HorizontalAlignment="Left" Margin="400,21,0,0" VerticalAlignment="Top"/>
         <Button Content="Get weather (asynchronous)" HorizontalAlignment="Left" Margin="17,99,0,0" VerticalAlignment="Top" Height="39" Width="163" Click="Button_Click_1"/>
         <Button Content="Get weather2 (asynchronous)" HorizontalAlignment="Left" Margin="17,154,0,0" VerticalAlignment="Top" Height="39" Width="163" Click="Button_Click_2"/>
-
     </Grid>
 </Window>
